@@ -1,0 +1,14 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package project.mavenproject1;
+
+/**
+ *
+ * @author Leonardo Booz
+ */
+public interface Message {
+    public void setMessage(String msg);
+    public String getMessage();
+}
