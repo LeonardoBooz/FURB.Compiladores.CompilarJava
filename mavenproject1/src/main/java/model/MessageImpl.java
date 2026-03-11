@@ -4,7 +4,7 @@
  */
 package model;
 
-import view.Message;
+import Interfaces.Message;
 
 /**
  *
