@@ -1,81 +1,136 @@
 package controller;
 
 import Interfaces.WindowIDE;
+import Interfaces.Editor;
+import Interfaces.File;
+import Interfaces.Message;
+
+import model.EditorImpl;
+import model.FileImpl;
+import model.MessageImpl;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * 
  * @author Enzo Kawakubo
  */
 public class CtrlIDEImpl implements CtrlIDE {
+
     private WindowIDE window;
+    private Editor editor;
+    private File file;
+    private Message message;
 
     public CtrlIDEImpl(WindowIDE window) {
+
         this.window = window;
+
+        this.editor = new EditorImpl();
+        this.file = new FileImpl();
+        this.message = new MessageImpl();
     }
 
     @Override
-    public void compileArchive() {
-        String code = window.getTextIde();
+    public void newArchive() {
 
-        try {
-            if (code == null || code.isEmpty()) {
-                throw new Exception("Código vazio");
-            }
+        editor.setArchive(null);
+        editor.setContentIde("");
 
-            window.setMessage("Compilação realizada com sucesso!");
-            window.setStatus("Compilado");
-        } catch (Exception e) {
-            window.setMessage("Erro na compilação: " + e.getMessage());
-            window.setStatus("Erro");
+        window.cleanTextIde();
+        window.cleaMessage();
+        window.setStatus("");
+    }
+
+    @Override
+    public void openArchive() {
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileFilter(new FileNameExtensionFilter("Arquivos TXT", "txt"));
+
+        int result = chooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+
+            java.io.File selected = chooser.getSelectedFile();
+            String path = selected.getAbsolutePath();
+
+            String content = file.openArchive(path);
+
+            editor.setArchive(path);
+            editor.setContentIde(content);
+
+            window.setTextIde(content);
+            window.cleaMessage();
+            window.setStatus(path);
         }
     }
 
     @Override
     public void saveArchive() {
-        try {
-            window.setStatus("Arquivo salvo com sucesso");
-        } catch (Exception e) {
-            window.setMessage("Erro ao salvar arquivo: " + e.getMessage());
+
+        String content = window.getTextIde();
+
+        if (!editor.isOpenedArchive()) {
+
+            JFileChooser chooser = new JFileChooser();
+            chooser.setFileFilter(new FileNameExtensionFilter("Arquivos TXT", "txt"));
+
+            int result = chooser.showSaveDialog(null);
+
+            if (result == JFileChooser.APPROVE_OPTION) {
+
+                java.io.File selected = chooser.getSelectedFile();
+                String path = selected.getAbsolutePath();
+
+                if (!path.endsWith(".txt")) {
+                    path += ".txt";
+                }
+
+                file.saveArchive(path, content);
+
+                editor.setArchive(path);
+                editor.setContentIde(content);
+
+                window.cleaMessage();
+                window.setStatus(path);
+            }
+
+        } else {
+
+            String path = editor.getArchive();
+
+            file.saveArchive(path, content);
+
+            editor.setContentIde(content);
+
+            window.cleaMessage();
         }
     }
 
     @Override
-    public void openArchive() {
-        try {
-            String content = "Conteúdo do arquivo aberto";
-            window.setTextIde(content);
-            window.setStatus("Arquivo aberto");
-        } catch (Exception e) {
-            window.setMessage("Erro ao abrir arquivo: " + e.getMessage());
-        }
-    }
+    public void compileArchive() {
 
-    @Override
-    public void newArchive() {
-        window.cleanTextIde();
         window.cleaMessage();
-        window.setStatus("Novo arquivo");
-    }
 
-    @Override
-    public void copie() {
-        window.setStatus("Texto copiado");
-    }
+        message.setMessage("Compilação de programas ainda não foi implementada.");
 
-    @Override
-    public void cut() {
-        window.cleanTextIde();
-        window.setStatus("Texto recortado");
+        window.setMessage(message.getMessage());
     }
 
     @Override
     public void showTeam() {
-        String teamInfo =
-            "Equipe do Projeto:\n" +
-            "Enzo Saleh Kawakubo\n" +
-            "Leonardo Booz\n" +
-            "Venâncio Cassua";
 
-        window.setMessage(teamInfo);
+        window.cleaMessage();
+
+        message.setMessage(
+                "Equipe de desenvolvimento do compilador:\n"
+                + "Leonardo Booz\n"
+                + "Venâncio Cassua\n"
+                + "Enzo Kawakubo"
+        );
+
+        window.setMessage(message.getMessage());
     }
 }
