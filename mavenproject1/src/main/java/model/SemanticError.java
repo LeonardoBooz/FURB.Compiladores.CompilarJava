@@ -1,3 +1,8 @@
+package model;
+
+
+import model.AnalysisError;
+
 public class SemanticError extends AnalysisError
 {
     public SemanticError(String msg, int position)

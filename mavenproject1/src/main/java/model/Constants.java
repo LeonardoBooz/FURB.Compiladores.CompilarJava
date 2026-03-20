@@ -1,3 +1,5 @@
+package model;
+
 public interface Constants extends ScannerConstants
 {
     int EPSILON  = 0;
