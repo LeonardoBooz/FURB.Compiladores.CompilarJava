@@ -806,15 +806,12 @@ public interface ScannerConstants
 
     String[] SCANNER_ERROR =
     {
-        "Caractere n�o esperado",
+        "símbolo inválido", // "Caractere não esperado"
         "",
         "",
-        "Erro identificando cte_string",
+        "constante_string inválida", // "Erro identificando cte_string"
         "",
-        "Erro identificando \"&&\"",
-        "",
-        "",
-        "",
+        "símbolo inválido", // "Erro identificando \"&&\""
         "",
         "",
         "",
@@ -827,23 +824,25 @@ public interface ScannerConstants
         "",
         "",
         "",
-        "Erro identificando <ignorar>",
-        "Erro identificando \"||\"",
-        "",
-        "",
-        "Erro identificando cte_string",
-        "",
-        "Erro identificando cte_float",
         "",
         "",
         "",
+        "comentário inválido ou não finalizado", // "Erro identificando <ignorar>"
+        "símbolo inválido", // "Erro identificando \"||\""
         "",
-        "Erro identificando id",
-        "Erro identificando <ignorar>",
+        "",
+        "constante_string inválida", // "Erro identificando cte_string"
+        "",
+        "constante_float inválida", // "Erro identificando cte_float"
+        "",
+        "",
+        "",
+        "",
+        "identificador inválido", // "Erro identificando id"
+        "comentário inválido ou não finalizado", // "Erro identificando <ignorar>"
         "",
         "",
         "",
         ""
     };
-
 }
