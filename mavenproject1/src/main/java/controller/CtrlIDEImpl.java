@@ -125,7 +125,7 @@ private String getClasse(Token t) {
         case Constants.t_id: return "identificador";
         case Constants.t_cte_int: return "constante_int";
         case Constants.t_cte_float: return "constante_float";
-        case Constants.t_cte_char: return "constante_char";
+        //case Constants.t_cte_char: return "constante_char";
         case Constants.t_cte_string: return "constante_string";
         default: return "símbolo especial";
     }
