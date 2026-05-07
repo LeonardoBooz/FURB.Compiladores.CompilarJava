@@ -15,11 +15,6 @@ public class Lexico implements Constants
         setInput(input);
     }
 
-    public Lexico(String input)
-    {
-        setInput(input);
-    }
-
     public void setInput(java.io.Reader input)
     {
         StringBuffer bfr = new StringBuffer();
@@ -38,12 +33,6 @@ public class Lexico implements Constants
             e.printStackTrace();
         }
 
-        setPosition(0);
-    }
-
-    public void setInput(String input)
-    {
-        this.input = input;
         setPosition(0);
     }
 
@@ -81,8 +70,23 @@ public class Lexico implements Constants
                 }
             }
         }
-        if (endState < 0 || (endState != state && tokenForState(lastState) == -2))
-            throw new LexicalError(SCANNER_ERROR[lastState], start);
+        if (endState < 0 || (endState != state && tokenForState(lastState) == -2)){
+
+            String msg = SCANNER_ERROR[lastState];
+
+            if (msg.equals("símbolo inválido")) {
+
+                char simbolo = input.charAt(position - 1);
+
+                throw new LexicalError(
+                    simbolo + " símbolo inválido",
+                    position - 1
+                );
+            }
+
+            throw new LexicalError(msg, position - 1);
+        }
+
 
         position = end;
 
@@ -93,6 +97,7 @@ public class Lexico implements Constants
         else
         {
             String lexeme = input.substring(start, end);
+            token = lookupToken(token, lexeme);
             return new Token(token, lexeme, start);
         }
     }
@@ -123,6 +128,27 @@ public class Lexico implements Constants
             return -1;
 
         return TOKEN_STATE[state];
+    }
+
+    public int lookupToken(int base, String key)
+    {
+        int start = SPECIAL_CASES_INDEXES[base];
+        int end   = SPECIAL_CASES_INDEXES[base+1]-1;
+
+        while (start <= end)
+        {
+            int half = (start+end)/2;
+            int comp = SPECIAL_CASES_KEYS[half].compareTo(key);
+
+            if (comp == 0)
+                return SPECIAL_CASES_VALUES[half];
+            else if (comp < 0)
+                start = half+1;
+            else  //(comp > 0)
+                end = half-1;
+        }
+
+        return base;
     }
 
     private boolean hasInput()

@@ -8,14 +8,34 @@ package view;
  *
  * @author Leonardo Booz
  */
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.InputMap;
+import javax.swing.JButton;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRootPane;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
+import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
+import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 import Interfaces.WindowIDE;
 import controller.CtrlIDE;
 import controller.CtrlIDEImpl;
-import javax.swing.border.Border;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 public class Editor extends JFrame implements WindowIDE {
 
@@ -154,7 +174,7 @@ public class Editor extends JFrame implements WindowIDE {
 
     public void defineColor(){
         Color corBotoesToolbar = new Color(50,50,50);
-        Color corFonte = new Color(0,0,0);
+        Color corFonte = new Color(225,225,225);
 
         JButton[] buttons = {btnNovo, btnAbrir, btnSalvar, btnCopiar, btnColar, btnRecortar, btnCompilar, btnEquipe};
 
@@ -166,14 +186,14 @@ public class Editor extends JFrame implements WindowIDE {
             b.setBorder(BorderFactory.createMatteBorder(0,1,0,1,Color.GRAY));
         }
 
-        Color textosAuxiliares = new Color(150,150,150);
+        Color textosAuxiliares = new Color(225,225,225);
 
         toolBar.setBackground(new Color(37,37,38));
         lineNumbers.setBackground(new Color(37,37,38));
         lineNumbers.setForeground(textosAuxiliares);
 
         textIde.setBackground(new Color(30,30,30));
-        textIde.setForeground(new Color(13,50,99));
+        textIde.setForeground(textosAuxiliares);
         textMessage.setBackground(new Color(30,30,30));
         textMessage.setForeground(textosAuxiliares);
         status.setBackground(new Color(0,122,204));

@@ -1,8 +1,5 @@
 package model;
 
-
-import model.AnalysisError;
-
 public class SyntaticError extends AnalysisError
 {
     public SyntaticError(String msg, int position)

@@ -1,0 +1,176 @@
+#---------------------------------------------------------------
+#símbolos especiais: 21
+#:  ;  ,  =  <-  (  )  &&  ||  !  ==  !=  <  <=  >  >=  +   -  *  /  ^
+
+#--- erro: símbolo inválido
+#@  ç  $  ~ & |
+
+#---------------------------------------------------------------
+#palavras reservadas
+ask  bool  char  define  end  elif  else  false  float  if  int  
+main  repeat  string  tell  true   until  while 
+
+#--- erro na escrita de palavras resevadas inválidas => NÃO TEM
+
+#---------------------------------------------------------------
+#símbolos especiais: 21
+#:  ;  ,  =  <-  (  )  &&  ||  !  ==  !=  <  <=  >  >=  +   -  *  /  ^
+
+#--- erro: símbolo inválido
+@  ç  $  ~ & |
+
+#---------------------------------------------------------------
+#palavras reservadas
+ask  bool  char  define  end  elif  else  false  float  if  int  
+main  repeat  string  tell  true   until  while 
+
+#--- erro na escrita de palavras resevadas inválidas => NÃO TEM
+
+#------------------------------------------------------------------
+#identificador
+area  media  
+area_1_2_3
+area_10
+area_1_2_3area
+
+#--- erro na escrita de identificadores
+m_
+n_a
+o1
+
+#------------------------------------------------------------------
+#constantes numéricas (int, float)
+1  12  123  1234  12345  123456  1234567  12345678  123456789
+1.0  12.0  123.0  1234.0  12345.01  123.456  1.234567  12345678.001012  
+0.0
+0.123
+0001 
+1234.00  
+012345.00 
+
+#--- erro na escrita de constantes numéricas => erro: símbolo inválido
+10.
+00..00
+
+#------------------------------------------------------------------
+#constantes char
+\n
+\s
+\t
+\\
+\x
+\1
+
+#------------------------------------------------------------------
+#constantes string
+"exemplo 01 - literal válido"
+"exemplo 02 - pode conter símbolos como + - *"
+"exemplo 03 - com acento é á í  e símbolos especiais ! @ $ $ [ ] + -"
+"exemplo 04 - tem erro nessa constante? "
+"exemplo 05 - %x tem erro nessa constante? "
+
+#--- erro: constante literal não finalizada
+" exemplo 02 - erro: tem quebra de linha 
+"""
+"\"
+"%"
+
+#------------------------------------------------------------------
+#comentário de linha
+
+#5aN
+#qualquer coisa menos \n
+ 
+#------------------------------------------------------------------
+#comentário de bloco: 
+
+{
+?comentário de bloco: qualquer caracter, zero ou mais vezes, muittasss vezes
+?comentário de bloco: qualquer caracter, zero ou mais vezes, inclusive []
+}
+
+02
+{
+sem fechar comentario
+
+03
+{
+com { }
+}
+
+04
+{}
+#------------------------------------------------------------------
+#identificador
+area  media  
+area_1_2_3
+area_10
+area_1_2_3area
+
+#--- erro na escrita de identificadores
+m_
+n_a
+o1
+
+#------------------------------------------------------------------
+#constantes numéricas (int, float)
+1  12  123  1234  12345  123456  1234567  12345678  123456789
+1.0  12.0  123.0  1234.0  12345.01  123.456  1.234567  12345678.001012  
+0.0
+0.123
+0001 
+1234.00  
+012345.00 
+
+#--- erro na escrita de constantes numéricas => erro: símbolo inválido
+10.
+00..00
+
+#------------------------------------------------------------------
+#constantes char
+\n
+\s
+\t
+\\
+\x
+\1
+
+#------------------------------------------------------------------
+#constantes string
+"exemplo 01 - literal válido"
+"exemplo 02 - pode conter símbolos como + - *"
+"exemplo 03 - com acento é á í  e símbolos especiais ! @ $ $ [ ] + -"
+"exemplo 04 - tem erro nessa constante? "
+"exemplo 05 - %x tem erro nessa constante? "
+
+#--- erro: constante literal não finalizada
+" exemplo 02 - erro: tem quebra de linha 
+"""
+"\"
+"%"
+
+#------------------------------------------------------------------
+#comentário de linha
+
+#5aN
+#qualquer coisa menos \n
+ 
+#------------------------------------------------------------------
+#comentário de bloco: 
+
+{
+?comentário de bloco: qualquer caracter, zero ou mais vezes, muittasss vezes
+?comentário de bloco: qualquer caracter, zero ou mais vezes, inclusive []
+}
+
+02
+{
+sem fechar comentario
+
+03
+{
+com { }
+}
+
+04
+{}
