@@ -102,13 +102,18 @@ public class CtrlIDEImpl implements CtrlIDE {
 
     private int getLinha(String input, int position) {
         int linha = 1;
+        char c = input.charAt(0);
 
         for (int i = 0; i <= position && i < input.length(); i++) {
-            char c = input.charAt(i);
+            c = input.charAt(i);
 
             if (c == '\n') {
                 linha++;
             }
+        }
+
+        if(c == '\n'){
+            linha--;
         }
 
         return linha;
@@ -152,6 +157,7 @@ public class CtrlIDEImpl implements CtrlIDE {
         window.cleaMessage();
 
         String input = window.getTextIde().replace("\r\n", "\n").replace("\n\r", "\n");
+        String inputSem = input.replace("\n", "");
         Lexico lexico = new Lexico(new StringReader(input));
 
         StringBuilder resultado = new StringBuilder();
@@ -160,7 +166,7 @@ public class CtrlIDEImpl implements CtrlIDE {
             Token token;
 
             while ((token = lexico.nextToken()) != null) {
-                resultado.append(formatarToken(token, input)).append("\n");
+                //resultado.append(formatarToken(token, inputSem)).append("\n");
             }
 
             resultado.append("\nprograma compilado com sucesso");
