@@ -91,32 +91,32 @@ public class Editor extends JFrame implements WindowIDE {
 
         Dimension sizeBotton = new Dimension(120, 70);
 
-        btnNovo = new JButton("Novo");
+        btnNovo = new JButton("Novo (Ctrl+N)");
         btnNovo.setPreferredSize(sizeBotton);
         btnNovo.setMinimumSize(sizeBotton);
         btnNovo.setMaximumSize(sizeBotton);
 
-        btnAbrir = new JButton("Abrir");
+        btnAbrir = new JButton("Abrir (Ctrl+O)");
         btnAbrir.setPreferredSize(sizeBotton);
         btnAbrir.setMinimumSize(sizeBotton);
         btnAbrir.setMaximumSize(sizeBotton);
 
-        btnSalvar = new JButton("Salvar");
+        btnSalvar = new JButton("Salvar (Ctrl+S)");
         btnSalvar.setPreferredSize(sizeBotton);
         btnSalvar.setMinimumSize(sizeBotton);
         btnSalvar.setMaximumSize(sizeBotton);
 
-        btnCopiar = new JButton("Copiar");
+        btnCopiar = new JButton("Copiar (Ctrl+C)");
         btnCopiar.setPreferredSize(sizeBotton);
         btnCopiar.setMinimumSize(sizeBotton);
         btnCopiar.setMaximumSize(sizeBotton);
 
-        btnColar = new JButton("Colar");
+        btnColar = new JButton("Colar (Ctrl+V)");
         btnColar.setPreferredSize(sizeBotton);
         btnColar.setMinimumSize(sizeBotton);
         btnColar.setMaximumSize(sizeBotton);
 
-        btnRecortar = new JButton("Recortar");
+        btnRecortar = new JButton("Recortar (Ctrl+X)");
         btnRecortar.setPreferredSize(sizeBotton);
         btnRecortar.setMinimumSize(sizeBotton);
         btnRecortar.setMaximumSize(sizeBotton);

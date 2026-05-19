@@ -17,7 +17,7 @@ public class LexicalError extends AnalysisError
     public LexicalError(String msg, int position, char simbolo) {
         super(msg, position);
         this.simbolo = simbolo;
-    }
+}
 
     public char getSimbolo() {
         return simbolo;
