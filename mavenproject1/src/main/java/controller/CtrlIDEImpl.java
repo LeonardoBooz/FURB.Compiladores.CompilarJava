@@ -15,6 +15,10 @@ import model.FileImpl;
 import model.LexicalError;
 import model.Lexico;
 import model.MessageImpl;
+import model.SemanticError;
+import model.Semantico;
+import model.Sintatico;
+import model.SyntaticError;
 import model.Token;
 
 public class CtrlIDEImpl implements CtrlIDE {
@@ -156,26 +160,85 @@ public class CtrlIDEImpl implements CtrlIDE {
 
         window.cleaMessage();
 
-        String input = window.getTextIde().replace("\r\n", "\n").replace("\n\r", "\n");
-        String inputSem = input.replace("\n", "");
+        String input = window.getTextIde()
+                .replace("\r\n", "\n")
+                .replace("\n\r", "\n");
+
         Lexico lexico = new Lexico(new StringReader(input));
+        Sintatico sintatico = new Sintatico();
+        Semantico semantico = new Semantico();
 
         StringBuilder resultado = new StringBuilder();
 
         try {
-            Token token;
 
-            while ((token = lexico.nextToken()) != null) {
-                //resultado.append(formatarToken(token, inputSem)).append("\n");
-            }
+            sintatico.parse(lexico, semantico);
 
-            resultado.append("\nprograma compilado com sucesso");
+            resultado.append("programa compilado com sucesso");
 
         } catch (LexicalError e) {
-            resultado.append(new StringBuilder(traduzErroLexico(e, input)));
+
+            resultado.append(traduzErroLexico(e, input));
+
+        } catch (SyntaticError e) {
+
+            int linha = getLinha(input, e.getPosition());
+
+            String encontrado =
+                    getTokenEncontrado(input, e.getPosition());
+
+            resultado.append("linha ")
+                    .append(linha)
+                    .append(": encontrado ")
+                    .append(encontrado)
+                    .append(" ")
+                    .append(e.getMessage());
+        } catch (SemanticError e) {
+
+            int linha = getLinha(input, e.getPosition());
+
+            resultado.append("linha ")
+                    .append(linha)
+                    .append(": ")
+                    .append(e.getMessage());
         }
 
         window.setMessage(resultado.toString());
+    }
+
+    private String getTokenEncontrado(String input, int position) {
+
+        try {
+
+            Lexico lexico = new Lexico(new StringReader(input));
+            Token token;
+
+            while ((token = lexico.nextToken()) != null) {
+
+                if (token.getPosition() >= position) {
+
+                    switch (token.getId()) {
+
+                        case Constants.t_cte_string:
+                            return "constante_string";
+
+                        case Constants.t_id:
+                        case Constants.t_cte_int:
+                        case Constants.t_cte_float:
+                        case Constants.t_cte_char:
+                            return token.getLexeme();
+
+                        default:
+                            return token.getLexeme();
+                    }
+                }
+            }
+
+        } catch (LexicalError e) {
+            // ignora
+        }
+
+        return "EOF";
     }
 
     @Override

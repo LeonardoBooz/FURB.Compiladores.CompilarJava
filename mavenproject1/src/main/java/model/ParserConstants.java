@@ -144,92 +144,94 @@ public interface ParserConstants
     String[] PARSER_ERROR =
     {
         "",
-        "Era esperado fim de programa",
-        "Era esperado id",
-        "Era esperado cte_int",
-        "Era esperado cte_float",
-        "Era esperado cte_char",
-        "Era esperado cte_string",
-        "Era esperado \":\"",
-        "Era esperado \";\"",
-        "Era esperado \",\"",
-        "Era esperado \"=\"",
-        "Era esperado \"<-\"",
-        "Era esperado \"(\"",
-        "Era esperado \")\"",
-        "Era esperado \"&&\"",
-        "Era esperado \"||\"",
-        "Era esperado \"!\"",
-        "Era esperado \"==\"",
-        "Era esperado \"!=\"",
-        "Era esperado \"<\"",
-        "Era esperado \"<=\"",
-        "Era esperado \">\"",
-        "Era esperado \">=\"",
-        "Era esperado \"+\"",
-        "Era esperado \"-\"",
-        "Era esperado \"*\"",
-        "Era esperado \"/\"",
-        "Era esperado \"^\"",
-        "Era esperado MAIN",
-        "Era esperado DEFINE",
-        "Era esperado IF",
-        "Era esperado ELSE",
-        "Era esperado ELIF",
-        "Era esperado REPEAT",
-        "Era esperado WHILE",
-        "Era esperado UNTIL",
-        "Era esperado TELL",
-        "Era esperado INT",
-        "Era esperado FLOAT",
-        "Era esperado CHAR",
-        "Era esperado BOOL",
-        "Era esperado STRING",
-        "Era esperado TRUE",
-        "Era esperado FALSE",
-        "Era esperado END",
-        "Era esperado ASK",
-        "<forma_geral_de_um_programa> inválido",
-        "<tipo> inválido",
-        "<forma_geral_do_comando_de_variaveis> inválido",
-        "<declaracao_de_variaveis> inválido",
-        "<declaracao_de_variaveis_> inválido",
-        "<declaracao_de_variavel> inválido",
-        "<lista_de_identificadores> inválido",
-        "<lista_de_identificadores_> inválido",
-        "<lista_de_instrucoes> inválido",
-        "<lista_de_instrucoes_> inválido",
-        "<instrucao> inválido",
-        "<forma_geral_do_comando_de_atribuicao> inválido",
-        "<operador_atribuicao> inválido",
-        "<forma_geral_do_comando_de_entrada_de_dados> inválido",
-        "<lista_de_entrada> inválido",
-        "<opc_string_lista_de_identificadores> inválido",
-        "<opc_string_lista_de_identificadores_> inválido",
-        "<opc_string> inválido",
-        "<forma_geral_do_comando_de_saida_de_dados> inválido",
-        "<lista_expressoes> inválido",
-        "<lista_expressoes_> inválido",
-        "<forma_geral_do_comando_de_selecao> inválido",
-        "<while_until> inválido",
-        "<opc_elif> inválido",
-        "<elif> inválido",
-        "<opc_else> inválido",
-        "<else> inválido",
-        "<forma_geral_dos_comandos_de_repeticao> inválido",
-        "<expressao> inválido",
-        "<expressao_> inválido",
-        "<and_or> inválido",
-        "<termo_logico> inválido",
-        "<relacional> inválido",
-        "<relacional_> inválido",
-        "<operador_relacional> inválido",
-        "<aritmetica> inválido",
-        "<aritmetica_> inválido",
-        "<termo_aritmetico> inválido",
-        "<termo_aritmetico_> inválido",
-        "<fator> inválido",
-        "<fator_> inválido",
-        "<elemento> inválido"
+        "esperado EOF", // "Era esperado fim de programa"
+        "esperado identificador", // "Era esperado id"
+        "esperado constante_int", // "Era esperado cte_int"
+        "esperado constante_float", // "Era esperado cte_float"
+        "esperado constante_char", // "Era esperado cte_char"
+        "esperado constante_string", // "Era esperado cte_string"
+        "esperado :", // "Era esperado \":\""
+        "esperado ;", // "Era esperado \";\""
+        "esperado ,", // "Era esperado \",\""
+        "esperado =", // "Era esperado \"=\""
+        "esperado <-", // "Era esperado \"<-\""
+        "esperado (", // "Era esperado \"(\""
+        "esperado )", // "Era esperado \")\""
+        "esperado &&", // "Era esperado \"&&\""
+        "esperado ||", // "Era esperado \"||\""
+        "esperado !", // "Era esperado \"!\""
+        "esperado ==", // "Era esperado \"==\""
+        "esperado !=", // "Era esperado \"!=\""
+        "esperado <", // "Era esperado \"<\""
+        "esperado <=", // "Era esperado \"<=\""
+        "esperado >", // "Era esperado \">\""
+        "esperado >=", // "Era esperado \">=\""
+        "esperado +", // "Era esperado \"+\""
+        "esperado -", // "Era esperado \"-\""
+        "esperado *", // "Era esperado \"*\""
+        "esperado /", // "Era esperado \"/\""
+        "esperado ^", // "Era esperado \"^\""
+        "esperado main", // "Era esperado MAIN"
+        "esperado define", // "Era esperado DEFINE"
+        "esperado if", // "Era esperado IF"
+        "esperado else", // "Era esperado ELSE"
+        "esperado elif", // "Era esperado ELIF"
+        "esperado repeat", // "Era esperado REPEAT"
+        "esperado while", // "Era esperado WHILE"
+        "esperado until", // "Era esperado UNTIL"
+        "esperado tell", // "Era esperado TELL"
+        "esperado int", // "Era esperado INT"
+        "esperado float", // "Era esperado FLOAT"
+        "esperado char", // "Era esperado CHAR"
+        "esperado bool", // "Era esperado BOOL"
+        "esperado string", // "Era esperado STRING"
+        "esperado true", // "Era esperado TRUE"
+        "esperado false", // "Era esperado FALSE"
+        "esperado end", // "Era esperado END"
+        "esperado ask", // "Era esperado ASK"
+
+        "esperado main", // "<forma_geral_de_um_programa> inválido"
+        "esperado bool char float int string", // "<tipo> inválido"
+        "esperado define", // "<forma_geral_do_comando_de_variaveis> inválido"
+        "esperado identificador ask define if repeat tell", // "<declaracao_de_variaveis> inválido"
+        "esperado identificador ask if repeat tell", // "<declaracao_de_variaveis_> inválido"
+        "esperado bool char float int string", // "<declaracao_de_variavel> inválido"
+        "esperado identificador", // "<lista_de_identificadores> inválido"
+        "esperado , ;", // "<lista_de_identificadores_> inválido"
+        "esperado identificador ask if repeat tell", // "<lista_de_instrucoes> inválido"
+        "esperado identificador ask if repeat tell end", // "<lista_de_instrucoes_> inválido"
+        "esperado identificador ask if repeat tell", // "<instrucao> inválido"
+        "esperado identificador", // "<forma_geral_do_comando_de_atribuicao> inválido"
+        "esperado = <-", // "<operador_atribuicao> inválido"
+        "esperado ask", // "<forma_geral_do_comando_de_entrada_de_dados> inválido"
+        "esperado identificador constante_string", // "<lista_de_entrada> inválido"
+        "esperado identificador", // "<opc_string_lista_de_identificadores> inválido"
+        "esperado , )", // "<opc_string_lista_de_identificadores_> inválido"
+        "esperado constante_string", // "<opc_string> inválido"
+        "esperado tell", // "<forma_geral_do_comando_de_saida_de_dados> inválido"
+        "esperado expressao", // "<lista_expressoes> inválido"
+        "esperado , )", // "<lista_expressoes_> inválido"
+        "esperado if", // "<forma_geral_do_comando_de_selecao> inválido"
+        "esperado while until", // "<while_until> inválido"
+        "esperado elif end", // "<opc_elif> inválido"
+        "esperado elif", // "<elif> inválido"
+        "esperado else end", // "<opc_else> inválido"
+        "esperado else", // "<else> inválido"
+        "esperado repeat", // "<forma_geral_dos_comandos_de_repeticao> inválido"
+
+        "esperado expressao", // "<expressao> inválido"
+        "esperado expressao", // "<expressao_> inválido"
+        "esperado && ||", // "<and_or> inválido"
+        "esperado expressao", // "<termo_logico> inválido"
+        "esperado expressao", // "<relacional> inválido"
+        "esperado expressao", // "<relacional_> inválido"
+        "esperado == != < <= > >=", // "<operador_relacional> inválido"
+        "esperado expressao", // "<aritmetica> inválido"
+        "esperado expressao", // "<aritmetica_> inválido"
+        "esperado expressao", // "<termo_aritmetico> inválido"
+        "esperado expressao", // "<termo_aritmetico_> inválido"
+        "esperado expressao", // "<fator> inválido"
+        "esperado expressao", // "<fator_> inválido"
+        "esperado expressao" // "<elemento> inválido"
     };
 }
